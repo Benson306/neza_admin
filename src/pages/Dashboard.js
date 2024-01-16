@@ -52,11 +52,11 @@ function Dashboard() {
     <>
       <PageTitle>Dashboard</PageTitle>
 
-      <CTA />
+      {/* <CTA /> */}
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-        <InfoCard title="Total clients" value="6389">
+        <InfoCard title="Total Brands" value="6389">
           <RoundIcon
             icon={PeopleIcon}
             iconColorClass="text-orange-500 dark:text-orange-100"
@@ -65,7 +65,7 @@ function Dashboard() {
           />
         </InfoCard>
 
-        <InfoCard title="Account balance" value="$ 46,760.89">
+        <InfoCard title="Account balance" value="Ksh. 46,760">
           <RoundIcon
             icon={MoneyIcon}
             iconColorClass="text-green-500 dark:text-green-100"
@@ -74,18 +74,27 @@ function Dashboard() {
           />
         </InfoCard>
 
-        <InfoCard title="New sales" value="376">
+        {/* <InfoCard title="New sales" value="376">
           <RoundIcon
             icon={CartIcon}
             iconColorClass="text-blue-600 dark:text-blue-100"
             bgColorClass="bg-blue-100 dark:bg-blue-600"
             className="mr-4"
           />
+        </InfoCard> */}
+
+        <InfoCard title="Total Creators" value="6389">
+          <RoundIcon
+            icon={PeopleIcon}
+            iconColorClass="text-blue-600 dark:text-blue-100"
+            bgColorClass="bg-blue-100 dark:bg-blue-600"
+            className="mr-4"
+          />
         </InfoCard>
 
-        <InfoCard title="Pending contacts" value="35">
+        <InfoCard title="This Month's Payout" value="35">
           <RoundIcon
-            icon={ChatIcon}
+            icon={MoneyIcon}
             iconColorClass="text-teal-500 dark:text-teal-100"
             bgColorClass="bg-teal-100 dark:bg-teal-500"
             className="mr-4"
@@ -93,7 +102,7 @@ function Dashboard() {
         </InfoCard>
       </div>
 
-      <TableContainer>
+      {/* <TableContainer>
         <Table>
           <TableHeader>
             <tr>
@@ -136,9 +145,9 @@ function Dashboard() {
             onChange={onPageChange}
           />
         </TableFooter>
-      </TableContainer>
+      </TableContainer> */}
 
-      <PageTitle>Charts</PageTitle>
+      {/* <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <ChartCard title="Revenue">
           <Doughnut {...doughnutOptions} />
@@ -149,7 +158,7 @@ function Dashboard() {
           <Line {...lineOptions} />
           <ChartLegend legends={lineLegends} />
         </ChartCard>
-      </div>
+      </div> */}
     </>
   )
 }
