@@ -92,7 +92,7 @@ function Dashboard() {
           />
         </InfoCard>
 
-        <InfoCard title="This Month's Payout" value="35">
+        <InfoCard title="This Month's Payout" value="ksh. 35">
           <RoundIcon
             icon={MoneyIcon}
             iconColorClass="text-teal-500 dark:text-teal-100"
