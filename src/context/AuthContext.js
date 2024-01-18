@@ -8,26 +8,26 @@ export const AuthProvider = ({ children }) => {
     
     const addUid = (uid) => {
         setUid(uid);
-        localStorage.setItem('uid', uid);
+        localStorage.setItem('neza_admin_uid', uid);
     }
 
     const addEmail = (email) => {
         setEmail(email);
-        localStorage.setItem('email',email);
+        localStorage.setItem('neza_admin_email',email);
     }
 
     const logout = () => {
         setEmail(null);
         setUid(null);
 
-        localStorage.removeItem('email');
-        localStorage.removeItem('uid');
+        localStorage.removeItem('neza_admin_email');
+        localStorage.removeItem('neza_admin_uid');
     }
 
 
     const isEmailSet = async () => {
         try{
-            let email = localStorage.getItem('email');
+            let email = localStorage.getItem('neza_admin_email');
 
             if(email){
                 setEmail(email);
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
     const isUidSet = async () => {
         try{
-            let uid = localStorage.getItem('uid');
+            let uid = localStorage.getItem('neza_admin_uid');
 
             if(uid){
                 setUid(uid);
