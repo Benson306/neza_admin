@@ -32,6 +32,7 @@ function Brands() {
     const [companyName, setCompanyName] = useState(null);
     const [email, setEmail] = useState(null);
     const [id, setId] = useState(null);
+    const [deleteState, setDeleteState] = useState(false);
 
     function openModal() {
         setIsModalOpen(true)
@@ -64,7 +65,7 @@ function Brands() {
         setError(true);
         setLoading(false);
       })
-    },[isModalOpen, isEditModalOpen])
+    },[isModalOpen, isEditModalOpen, deleteState])
 
     const handleDelete = (id) => {
      
@@ -82,6 +83,7 @@ function Brands() {
           progress: undefined,
           theme: "colored",
           });
+          setDeleteState(true);
       })
       .catch(err => {
         toast.error('Server Error', {

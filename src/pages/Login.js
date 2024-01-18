@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import ImageLight from '../assets/img/login-office.jpeg'
 import ImageDark from '../assets/img/login-office-dark.jpeg'
@@ -7,10 +7,15 @@ import { GithubIcon, TwitterIcon } from '../icons'
 import { Label, Input, Button } from '@windmill/react-ui'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../context/AuthContext'
 
 function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+
+  const { addUid, addEmail } = useContext(AuthContext)
+
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
 
@@ -49,6 +54,13 @@ function Login() {
           draggable: true,
           progress: undefined,
           theme: "colored",
+          });
+
+          response.json().then((res)=>{
+            addEmail(res.email);
+            addUid(res._id);
+
+            navigate('/app/dashboard');
           });
       }else{
         toast.error('Check your credentials', {
