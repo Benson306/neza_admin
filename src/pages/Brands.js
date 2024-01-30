@@ -30,6 +30,7 @@ function Brands() {
 
     const [brandName, setBrandName] = useState(null);
     const [companyName, setCompanyName] = useState(null);
+    const [country, setCountry] = useState("kenya");
     const [email, setEmail] = useState(null);
     const [id, setId] = useState(null);
     const [deleteState, setDeleteState] = useState(false);
@@ -49,6 +50,7 @@ function Brands() {
     function closeEditModal() {
       setBrandName(null);
       setCompanyName(null);
+      setCountry("kenya");
       setEmail(null);
       setId(null);
       setIsEditModalOpen(false)
@@ -101,7 +103,7 @@ function Brands() {
 
     const handleSubmit = () => {
 
-        if(brandName == null || companyName == null || email == null){
+        if(brandName == null || companyName == null || email == null || country == null){
           toast.error('All fields are required', {
             position: "top-right",
             autoClose: 1000,
@@ -123,7 +125,8 @@ function Brands() {
           body: JSON.stringify({
             brandName,
             companyName,
-            email
+            email,
+            country
           })
         })
         .then(response => {
@@ -168,7 +171,7 @@ function Brands() {
 
     const handleEdit = () => {
 
-      if(brandName == null || companyName == null || email == null){
+      if(brandName == null || companyName == null || email == null || country == null){
         toast.error('All fields are required', {
           position: "top-right",
           autoClose: 1000,
@@ -190,7 +193,8 @@ function Brands() {
         body: JSON.stringify({
           brandName,
           companyName,
-          email
+          email,
+          country
         })
       })
       .then(response => {
@@ -235,23 +239,34 @@ function Brands() {
   return (
     <div>
       <ToastContainer />
-        <PageTitle>Brands</PageTitle>
+        <PageTitle>Companies</PageTitle>
 
         <div className='flex justify-end mr-20 mb-10'>
-            <Button class="bg-blue-600 p-2 rounded-lg text-sm text-white" onClick={openModal}>+ Add Brand</Button>
+            <Button class="bg-blue-600 p-2 rounded-lg text-sm text-white" onClick={openModal}>+ Add A Company</Button>
         </div>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <ModalHeader>Add Brand</ModalHeader>
+        <ModalHeader>Add A Company</ModalHeader>
         <ModalBody>
-
+          <Label className="mt-1">
+            <span>Company</span>
+            <Input className="mt-2" onChange={e => setCompanyName(e.target.value)} placeholder="Neza" />
+          </Label>
           <Label >
             <span>Brand Name</span>
             <Input className="mt-2" onChange={e => setBrandName(e.target.value)} placeholder="Neza Brand" />
           </Label>
           <Label className="mt-1">
-            <span>Company</span>
-            <Input className="mt-2" onChange={e => setCompanyName(e.target.value)} placeholder="Neza" />
+            <span>Country</span>
+            <Select 
+                className="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
+                onChange={e => setCountry(e.target.value)}
+              >
+              <option value="kenya">Kenya</option>
+              <option value="uganda">Uganda</option>
+              <option value="sa">South Africa</option>
+              <option value="nigeria">Nigeria</option>
+            </Select>
           </Label>
           <Label className="mt-1">
             <span>Email</span>
@@ -290,10 +305,18 @@ function Brands() {
       {/* Edit Modal */}
 
       <Modal isOpen={isEditModalOpen} onClose={closeEditModal}>
-        <ModalHeader>Edit Brand Details</ModalHeader>
+        <ModalHeader>Edit Company Details</ModalHeader>
         <ModalBody>
 
           <Label >
+          <Label className="mt-1">
+            <span>Company</span>
+            <Input className="mt-2" 
+              onChange={e => setCompanyName(e.target.value)} 
+              placeholder="Neza"
+              value={companyName}
+            />
+          </Label>
             <span>Brand Name</span>
             <Input className="mt-2" 
               onChange={e => setBrandName(e.target.value)} 
@@ -302,12 +325,17 @@ function Brands() {
             />
           </Label>
           <Label className="mt-1">
-            <span>Company</span>
-            <Input className="mt-2" 
-              onChange={e => setCompanyName(e.target.value)} 
-              placeholder="Neza"
-              value={companyName}
-            />
+            <span>Country</span>
+            <Select 
+                className="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
+                onChange={e => setCountry(e.target.value)}
+                value={country}
+              >
+              <option value="kenya">Kenya</option>
+              <option value="uganda">Uganda</option>
+              <option value="sa">South Africa</option>
+              <option value="nigeria">Nigeria</option>
+            </Select>
           </Label>
           <Label className="mt-1">
             <span>Email</span>
@@ -354,6 +382,7 @@ function Brands() {
             <tr>
               <TableCell>Brand Name</TableCell>
               <TableCell>Company</TableCell>
+              <TableCell>Country</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Actions</TableCell>
@@ -367,6 +396,9 @@ function Brands() {
                 </TableCell>
                 <TableCell>
                   <span className="text-sm">{brand.companyName}</span>
+                </TableCell>
+                <TableCell>
+                  <span className="text-sm capitalize">{brand.country}</span>
                 </TableCell>
                 <TableCell>
                   <span className="text-sm">{brand.email}</span>

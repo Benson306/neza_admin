@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/app/brands', // the url
     icon: 'BrandIcon', // the component being exported from icons/index.js
-    name: 'Brands', // name that appear in Sidebar
+    name: 'Companies', // name that appear in Sidebar
   },
   {
     path: '/app/admin_users', // the url
