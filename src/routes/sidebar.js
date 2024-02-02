@@ -21,11 +21,11 @@ const routes = [
     icon: 'AdminIcon', // the component being exported from icons/index.js
     name: 'Admin Users', // name that appear in Sidebar
   },
-  // {
-  //   path: '/app/forms',
-  //   icon: 'FormsIcon',
-  //   name: 'Forms',
-  // },
+  {
+    path: '/app/creator_applications',
+    icon: 'FormsIcon',
+    name: 'Creator Applications',
+  },
   // {
   //   path: '/app/cards',
   //   icon: 'CardsIcon',
