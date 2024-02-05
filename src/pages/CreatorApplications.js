@@ -12,6 +12,7 @@ import {
 } from '@windmill/react-ui'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { Modal, ModalBody } from '@windmill/react-ui';
 
 function CreatorsApplication() {
   const [data, setData] = useState([]);
@@ -85,9 +86,37 @@ function CreatorsApplication() {
     })
   }
 
+  const [pdfUrl, setPdfUrl] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePreviewClick = async (pdf_name) => {
+    setPdfUrl(`${process.env.REACT_APP_API_URL}/uploads/${pdf_name}`);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setPdfUrl(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <div className='w-full mx-auto'>
         <ToastContainer />
+
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <ModalBody>
+              <div className="mt-2">
+                <iframe
+                  title="PDF Preview"
+                  src={pdfUrl}
+                  width={"100%"}
+                  height="500px"
+                  style={{ border: 'none', zoom: '1.2', width: '100%' }}
+                ></iframe>
+              </div>
+          </ModalBody>
+        </Modal>
+
       { !loading && data.length > 0 && <div className='capitalize flex my-3 mr-20 text-xs text-gray-600 dark:text-gray-400'>
         Total Applications: <span className='font-semibold ml-2'>{data.length}</span>
       </div> }
@@ -102,7 +131,8 @@ function CreatorsApplication() {
               <TableCell >ID Number</TableCell>
               <TableCell >KRA PIN</TableCell>
               <TableCell >Country</TableCell>
-              <TableCell >View Scans</TableCell>
+              <TableCell >View National ID</TableCell>
+              <TableCell >View KRA PIN</TableCell>
               <TableCell >Actions</TableCell>
             </tr>
           </TableHeader>
@@ -125,7 +155,22 @@ function CreatorsApplication() {
                 </TableCell>
                 <TableCell>
                   <span className="text-sm capitalize">
-                  <button>View Scans</button>
+                  <button
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    handlePreviewClick(item.id_file);
+                  }}
+                  >View ID</button>
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <span className="text-sm capitalize">
+                  <button
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    handlePreviewClick(item.kra_file);
+                  }}
+                  >View KRA PIN</button>
                   </span>
                 </TableCell>
                 <TableCell>
