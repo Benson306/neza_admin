@@ -27,7 +27,6 @@ function CreatorsApplication() {
     .then( response => response.json())
     .then(response => {
       setData(response);
-      console.log(response);
       setLoading(false);
     })
     .catch(err => {
@@ -131,8 +130,8 @@ function CreatorsApplication() {
               <TableCell >ID Number</TableCell>
               <TableCell >KRA PIN</TableCell>
               <TableCell >Country</TableCell>
-              <TableCell >View National ID</TableCell>
-              <TableCell >View KRA PIN</TableCell>
+              <TableCell >National ID</TableCell>
+              <TableCell >KRA PIN</TableCell>
               <TableCell >Actions</TableCell>
             </tr>
           </TableHeader>
@@ -156,6 +155,7 @@ function CreatorsApplication() {
                 <TableCell>
                   <span className="text-sm capitalize">
                   <button
+                  className='text-blue-500 underline text-xs'
                   onClick={(e)=>{
                     e.preventDefault();
                     handlePreviewClick(item.id_file);
@@ -166,6 +166,7 @@ function CreatorsApplication() {
                 <TableCell>
                   <span className="text-sm capitalize">
                   <button
+                  className='text-blue-500 underline text-xs'
                   onClick={(e)=>{
                     e.preventDefault();
                     handlePreviewClick(item.kra_file);
