@@ -127,6 +127,7 @@ function CreatorsApplication() {
           <TableHeader>
             <tr>
               <TableCell >Name/Email</TableCell>
+              <TableCell >Phone Number</TableCell>
               <TableCell >ID Number</TableCell>
               <TableCell >KRA PIN</TableCell>
               <TableCell >Country</TableCell>
@@ -142,6 +143,9 @@ function CreatorsApplication() {
                 <TableCell>
                       <p className="font-semibold">{item.name}</p>
                       <p className="text-xs text-gray-600 dark:text-gray-400">{item.email}</p>
+                </TableCell>
+                <TableCell>
+                  <span className="text-sm">{item.phone_number}</span>
                 </TableCell>
                 <TableCell>
                   <span className="text-sm">{item.id_number}</span>
