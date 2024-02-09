@@ -17,14 +17,14 @@ const routes = [
     name: 'Companies', // name that appear in Sidebar
   },
   {
-    path: '/app/admin_users', // the url
-    icon: 'AdminIcon', // the component being exported from icons/index.js
-    name: 'Admin Users', // name that appear in Sidebar
-  },
-  {
     path: '/app/creator_applications',
     icon: 'FormsIcon',
     name: 'Creator Applications',
+  },
+  {
+    path: '/app/admin_users', // the url
+    icon: 'AdminIcon', // the component being exported from icons/index.js
+    name: 'Admin Users', // name that appear in Sidebar
   },
   // {
   //   path: '/app/cards',
