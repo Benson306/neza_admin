@@ -38,12 +38,12 @@ const routes = [
     component: Brands
   },
   {
-    path: '/admin_users',
-    component: AdminUsers
-  },
-  {
     path: '/creator_applications',
     component: CreatorApplications,
+  },
+  {
+    path: '/admin_users',
+    component: AdminUsers
   },
   {
     path: '/forms',
