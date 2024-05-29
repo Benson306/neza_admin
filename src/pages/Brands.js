@@ -171,7 +171,7 @@ function Brands() {
 
     const handleEdit = () => {
 
-      if(brandName == null || companyName == null || email == null || country == null){
+      if(brandName == null || companyName == null || country == null){
         toast.error('All fields are required', {
           position: "top-right",
           autoClose: 1000,
@@ -193,7 +193,6 @@ function Brands() {
         body: JSON.stringify({
           brandName,
           companyName,
-          email,
           country
         })
       })
@@ -269,7 +268,7 @@ function Brands() {
             </Select>
           </Label>
           <Label className="mt-1">
-            <span>Email</span>
+            <span>Admin email</span>
             <Input type="email" onChange={e => setEmail(e.target.value)} className="mt-2" placeholder="Neza Brand" />
           </Label>
           
@@ -337,15 +336,6 @@ function Brands() {
               <option value="nigeria">Nigeria</option>
             </Select>
           </Label>
-          <Label className="mt-1">
-            <span>Email</span>
-            <Input type="email" 
-              onChange={e => setEmail(e.target.value)} 
-              className="mt-2" 
-              placeholder="Neza Brand"
-              value={email}
-            />
-          </Label>
           
         </ModalBody>
         <ModalFooter>
@@ -383,7 +373,6 @@ function Brands() {
               <TableCell>Brand Name</TableCell>
               <TableCell>Company</TableCell>
               <TableCell>Country</TableCell>
-              <TableCell>Email</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>Actions</TableCell>
             </tr>
@@ -399,9 +388,6 @@ function Brands() {
                 </TableCell>
                 <TableCell>
                   <span className="text-sm capitalize">{brand.country}</span>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">{brand.email}</span>
                 </TableCell>
                 <TableCell>
                   <span className="text-sm">{brand.date}</span>
